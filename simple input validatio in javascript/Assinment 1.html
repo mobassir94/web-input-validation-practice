@@ -1,0 +1,76 @@
+<head>
+ <style>
+body {
+    background-color: green;
+}
+</style>
+    <title>DIU study Tour Eligibity Test</title>
+    <script language="javascript">
+        fields = 0;
+        var re = /[swecseteSWECSETEengENGEEEeee]/;
+   function addInput() {
+            var fieldValue = document.getElementById("input1").value;
+             var fieldValue1 = document.getElementById("input2").value;
+              var fieldValue2 = document.getElementById("input3").value;
+              var fieldValue3 = document.getElementById("input4").value;
+            if (fieldValue != "" && fieldValue1 != "" && fieldValue2 != "" && fieldValue3 != "") {
+                if (fields != 10) {
+                   if (!fieldValue.match(/^[a-z A-Z]+$/)) 
+                              {
+                          alert('Only alphabets and space are allowed(in first name)');
+                          return false;
+                            }
+                         if (!fieldValue1.match(/^[a-z A-Z]+$/)) 
+                              {
+                          alert('Only alphabets and space are allowed(in last name)');
+                          return false;
+                            }
+                          if (!fieldValue2.match(/^[A-z]{3}[0-9]{3}$/g)) //maches any string that starts with 3 alpabets and ends with 3 numbers
+                              {
+                          alert('departent name should start with 3 alpabets and end with 3 numbers)');
+                          return false;
+                            }
+                      if (!fieldValue3.match(/^[0-9 -]+$/)) 
+                              {
+                          alert('Only numeric values and (-) mark is allowed(in student ID)');
+                          return false;
+                            }
+                    
+                    fields += 1;
+                } else {
+                    document.getElementById('text').innerHTML += "<br />Only 10 upload fields allowed." + fieldValue;
+                    document.form.add.disabled = true;
+                }
+            } else {
+                alert("Input field should not be blank");
+            }
+        if(fieldValue.match(/^[a-z A-Z]+$/) && fieldValue1.match(/^[a-z A-Z]+$/) && fieldValue2.match(re) && fieldValue3.match(/^[0-9 -]+$/)) alert("SUBMISSION SUCCESSFULL!! Thank You.");
+        }
+    </script>
+</head>
+
+<body>
+    <form name="form">
+        <label for="name">Name:</label>
+        <input placeholder="Your First name" type="text" id="input1" name="fname" required>
+        <input placeholder = "Yur Last name" type="text" id="input2" name="lname" required>
+        <br>
+        <br>
+         <label for="dept">Department:</label>
+         <input placeholder = "Your Department Name" type="text" id="input3" name="dept" required>
+        <br>
+        <br>
+         <label for="sid">student ID:</label>
+         <input placeholder = "Your Student ID" type="text" id="input4" name="stid" required>
+         <br>
+        <br>
+        <button type="button" onclick="addInput()">Submit</button>
+        <br>
+        <br>
+    </form>
+    <div id="text">
+
+    </div>
+</body>
+
+</html>

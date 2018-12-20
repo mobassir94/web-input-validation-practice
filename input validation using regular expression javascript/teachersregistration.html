@@ -1,0 +1,45 @@
+<!Doctype html>
+<head>
+     <title> TEACHER Registration panel </title>
+  <body>
+  
+   <form name="form">
+        <label for="course">Teachers Name :</label>
+        <input type="text" id="input1" name="course" required>
+        <br>
+        <br>
+         <label for="dept">Teachers Department :</label>
+         <input type="text" id="input2" name="dept" required>
+        <br>
+        <br>
+        <button type="button" onclick="addInput()">Submit</button>
+        <br>
+        <br>
+    </form>
+	
+	   <script>
+		fields = 0;
+   function addInput() {
+            
+            var course = document.getElementById("input1").value;
+             var dept = document.getElementById("input2").value;
+			  if(course != "" && dept != ""){
+			        if (!course.match( /^[a-z A-Z]+$/))  
+                              {
+                          alert('Only alphabets and space are allowed(in course name)');
+                          return false;
+                            }
+							
+							 if (!dept.match(/^[A-z]{3}[0-9]{3}$/g)) //maches any string that starts with 3 alpabets and ends with 3 numbers
+                              {
+                          alert('departent name should start with 3 alpabets and end with 3 numbers)');
+                          return false;
+                            }
+			  fields+=1;
+			  alert("submitted successfully!!");
+			  }else alert("input fields shouldn't be empty");
+			  
+	}
+</script>
+  </body>
+</head>
